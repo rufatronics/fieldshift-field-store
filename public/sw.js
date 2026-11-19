@@ -1,4 +1,4 @@
-const CACHE = "fieldshift-fs-v1";
+const CACHE = "fieldshift-fs-v2";
 const ASSETS = ["/", "/app.css", "/app.js", "/manifest.webmanifest", "/manus-routes.json", "/../shared/decision-engine.mjs", "/../shared/device-contract.mjs", "/../shared/simulator.mjs"];
 self.addEventListener("install", event => event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(ASSETS.map(path => path.startsWith("/../") ? path.replace("/../", "/") : path))).then(() => self.skipWaiting())));
 self.addEventListener("activate", event => event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key !== CACHE).map(key => caches.delete(key)))).then(() => self.clients.claim())));
