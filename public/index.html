@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#17201f">
+  <meta name="description" content="Offline-first field and grain-store monitoring for FieldShift.">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="stylesheet" href="/app.css">
+  <title>FieldShift Field + Store</title>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="rail" aria-label="Primary navigation">
+      <div class="brand-lockup">
+        <div class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+        <div><div class="brand-top">FIELD / SHIFT</div><div class="brand-sub">FIELD + STORE</div></div>
+      </div>
+      <div class="rail-section-label">WORKSPACE</div>
+      <nav class="nav-list">
+        <button class="nav-item active" data-view="plan"><span class="nav-index">01</span><span>Plan</span><span class="nav-meta">3 seasons</span></button>
+        <button class="nav-item" data-view="field"><span class="nav-index">02</span><span>Live field</span><span class="nav-meta">5 signals</span></button>
+        <button class="nav-item" data-view="store"><span class="nav-index">03</span><span>Store watch</span><span class="nav-meta">2 signals</span></button>
+        <button class="nav-item" data-view="devices"><span class="nav-index">04</span><span>Devices</span><span class="nav-meta">2 nodes</span></button>
+        <button class="nav-item" data-view="demo"><span class="nav-index">05</span><span>Demo mode</span><span class="nav-meta">simulator</span></button>
+        <button class="nav-item" data-view="technical"><span class="nav-index">06</span><span>Technical evidence</span><span class="nav-meta">trace</span></button>
+      </nav>
+      <div class="rail-bottom">
+        <div class="offline-note"><span class="status-dot"></span><div><strong>Local first</strong><small>Plan stays on this device.</small></div></div>
+        <a class="lite-link" href="/lite.html">Open Lite mode <span>↗</span></a>
+        <div class="rail-footnote">A fictional demonstration system.<br>Crop parameters need agronomic review.</div>
+      </div>
+    </aside>
+
+    <main class="main-canvas">
+      <header class="topbar">
+        <div class="breadcrumb"><span>COOPERATIVE / KANO</span><span class="slash">/</span><strong id="view-title">Plan</strong></div>
+        <div class="top-actions"><span id="connection-badge" class="pill pill-live"><span class="status-dot"></span> LOCAL / READY</span><button id="reset-demo" class="text-button">Reset demo</button></div>
+      </header>
+
+      <div id="banner" class="alert-banner hidden" role="status"></div>
+
+      <section class="view active" data-view-panel="plan">
+        <div class="view-intro split-intro"><div><p class="eyebrow">01 / BEFORE PLANTING</p><h1>Build a season<br><em>you can defend.</em></h1><p class="intro-copy">FieldShift turns a few farmer inputs into a transparent three-season rotation. The rules decide. Every other signal stays in its lane.</p></div><div class="intro-stamp"><span class="stamp-line"></span><strong>FICTIONAL EXAMPLE</strong><small>MALAM SANI / KANO</small><span class="stamp-line"></span></div></div>
+        <div class="story-band"><div class="story-marker">A</div><div><strong>Malam Sani: plan, watch, protect</strong><p>Low plot · no irrigation · poor storage · maize → maize → groundnut</p></div><div class="story-score"><span>ILLUSTRATIVE DROUGHT REPLAY</span><strong id="plan-score">65</strong><small>/ 100 current plan</small></div><div class="story-alt"><span>TOP ALTERNATIVE</span><strong id="plan-alt-score">89</strong><small id="plan-alt-name">Pearl millet → Cowpea → Sesame</small></div></div>
+        <div class="metric-row" id="plan-metrics"></div>
+        <div class="content-grid plan-grid"><section class="panel panel-plan"><div class="panel-head"><div><p class="eyebrow">DECISION OUTPUT</p><h2>Your three-season rotation</h2></div><span class="verified-label"><span class="status-dot"></span> RULES ACTIVE</span></div><div id="rotation-card"></div><div class="panel-foot"><span>Current plan compared with safe alternatives.</span><button class="line-button" data-view-target="technical">Open decision trace <span>→</span></button></div></section><section class="panel panel-climate"><div class="panel-head"><div><p class="eyebrow">CLIMATE CONTEXT</p><h2>Kano rain window</h2></div><span class="data-label">DEMO ZONE DATA</span></div><div id="climate-chart" class="rain-chart"></div><div class="chart-caption"><span><i class="legend-swatch dark"></i>rainy month</span><span><i class="legend-swatch light"></i>dry month</span><span>mm / month</span></div><div class="climate-note"><span class="note-number">01</span><p>Season is calculated from months with 50+ mm rain. Exact location is not stored.</p></div></section></div>
+        <section class="panel alternatives-panel"><div class="panel-head"><div><p class="eyebrow">WHAT COULD CHANGE</p><h2>Safer alternatives</h2></div><span class="data-label">RANKED BY THE SAME ENGINE</span></div><div id="alternatives-list" class="alternatives-list"></div></section>
+      </section>
+
+      <section class="view" data-view-panel="field">
+        <div class="view-intro"><p class="eyebrow">02 / DURING THE SEASON</p><h1>Replace the guess<br><em>with a reading.</em></h1><p class="intro-copy">The field node supplies conditions. It does not become a new decision-maker.</p></div>
+        <div class="signal-strip"><div><span class="eyebrow">FIELD NODE</span><strong id="field-quality-title">Normal field</strong><small id="field-quality-sub">Last message accepted from field-kano-coop-01</small></div><div class="signal-strip-right"><span id="field-quality-pill" class="pill pill-live"><span class="status-dot"></span> LIVE / LOCAL</span><span id="field-age" class="mono">0 min old</span></div></div>
+        <div id="field-metrics" class="metric-grid four"></div>
+        <div class="content-grid field-grid"><section class="panel"><div class="panel-head"><div><p class="eyebrow">OBSERVED SIGNALS</p><h2>Field conditions</h2></div><span class="data-label">RAW + LAST KNOWN</span></div><div id="field-chart" class="telemetry-chart"></div><div id="field-rules" class="rule-callouts"></div></section><section class="panel field-action-panel"><div class="panel-head"><div><p class="eyebrow">PLAIN LANGUAGE</p><h2>What changed?</h2></div></div><div id="field-action"></div><details class="evidence-drawer"><summary>Show transformation evidence</summary><pre id="field-transform"></pre></details></section></div>
+      </section>
+
+      <section class="view" data-view-panel="store">
+        <div class="view-intro"><p class="eyebrow">03 / AFTER HARVEST</p><h1>Protect what<br><em>you stored.</em></h1><p class="intro-copy">A store node watches for dangerous combinations of heat and humidity. It raises a practical alert; it does not guarantee protection from every spoilage pathway.</p></div>
+        <div id="store-risk-banner" class="store-risk-banner"></div>
+        <div id="store-metrics" class="metric-grid two"></div>
+        <div class="content-grid store-grid"><section class="panel"><div class="panel-head"><div><p class="eyebrow">STORE NODE</p><h2>Recent conditions</h2></div><span class="data-label">LOCAL THRESHOLDS</span></div><div id="store-history" class="store-history"></div><div class="threshold-box"><span class="eyebrow">R-STORE-05 THRESHOLDS</span><div><span>Humidity <strong>≥ 70%</strong></span><span>Temperature <strong>≥ 32°C</strong></span></div></div></section><section class="panel"><div class="panel-head"><div><p class="eyebrow">ACTION LOG</p><h2>Alerts stay visible</h2></div><span class="verified-label"><span class="status-dot"></span> IN-APP ONLY</span></div><div id="alert-log" class="alert-log"></div><div class="panel-foot"><span>Fake local adapter only. No SMS is sent.</span><button class="line-button" data-view-target="technical">Inspect adapter <span>→</span></button></div></section></div>
+      </section>
+
+      <section class="view" data-view-panel="devices">
+        <div class="view-intro compact"><p class="eyebrow">04 / HARDWARE</p><h1>Know what is<br><em>connected.</em></h1><p class="intro-copy">One shared node can serve a cooperative. Every device reports identity, power, connection, calibration, and last-seen time.</p></div>
+        <div class="device-summary"><div><span class="eyebrow">DEPLOYMENT UNIT</span><strong>1 cooperative / 2 sensor nodes</strong></div><div><span class="eyebrow">SYNC MODE</span><strong>Local only <span class="small-muted">· explicit sync is planned</span></strong></div><div><span class="eyebrow">COORDINATES</span><strong>Not collected</strong></div></div>
+        <div id="device-list" class="device-list"></div>
+        <section class="panel device-boundary"><div class="panel-head"><div><p class="eyebrow">HARDWARE BOUNDARY</p><h2>Measurements in. Decisions stay here.</h2></div><span class="rule-tag">NO SENSOR OVERRIDE</span></div><div class="boundary-columns"><p>Sensor readings can affect the visible water, heat, flood, or storage context. They never rewrite crop parameters and never remove a safety gate.</p><p>Physical ESP32, BLE, Wi-Fi, rain gauge, water-level, battery, and GSM/SMS paths are documented proposals. They are not physically tested in this repository.</p></div></section>
+      </section>
+
+      <section class="view" data-view-panel="demo">
+        <div class="view-intro split-intro"><div><p class="eyebrow">05 / DEMONSTRATION</p><h1>Make the system<br><em>change in public.</em></h1><p class="intro-copy">Switch scenarios to show exactly how raw readings become rule evidence, store alerts, and stale-data safety.</p></div><div class="demo-counter"><span class="eyebrow">SCENARIO</span><strong id="demo-step">01</strong><small id="demo-step-label">NORMAL FIELD</small></div></div>
+        <div class="scenario-grid" id="scenario-grid"></div>
+        <div class="demo-sequence"><div class="sequence-label"><span class="eyebrow">LIVE SCRIPT</span><strong>Malam Sani</strong><small>plan → watch → protect</small></div><div class="sequence-steps"><button class="sequence-step active" data-scenario="normalField"><span>01</span><strong>Plan</strong><small>65 / 89 replay</small></button><button class="sequence-step" data-scenario="dryingSoil"><span>02</span><strong>Drying soil</strong><small>field signal</small></button><button class="sequence-step" data-scenario="humidStore"><span>03</span><strong>Humid store</strong><small>R-STORE-05</small></button><button class="sequence-step" data-scenario="staleField"><span>04</span><strong>Disconnect</strong><small>stale safety</small></button></div></div>
+        <section class="panel demo-readout"><div class="panel-head"><div><p class="eyebrow">SCENARIO READOUT</p><h2 id="demo-readout-title">Normal field</h2></div><span id="demo-readout-pill" class="pill pill-live">SYNTHETIC INPUT</span></div><div id="demo-readout-body"></div></section>
+      </section>
+
+      <section class="view" data-view-panel="technical">
+        <div class="view-intro compact"><p class="eyebrow">06 / TECHNICAL EVIDENCE</p><h1>Nothing important<br><em>happens in the dark.</em></h1><p class="intro-copy">Expand the evidence. Raw readings, transformations, rule IDs, and advisory boundaries stay inspectable.</p></div>
+        <div class="evidence-banner"><div class="evidence-icon">R</div><div><strong>Rules are the recommendation authority.</strong><p>AI and forecasts may explain supplied context. They cannot modify the score, remove a gate, or invent a measurement.</p></div></div>
+        <div class="content-grid technical-grid"><section class="panel"><div class="panel-head"><div><p class="eyebrow">RULE REGISTRY</p><h2>Decision chain</h2></div><span class="data-label">SHARED ENGINE</span></div><div id="rule-registry" class="rule-registry"></div></section><section class="panel"><div class="panel-head"><div><p class="eyebrow">LATEST PAYLOAD</p><h2>Raw message</h2></div><span class="data-label">JSON / LOCAL</span></div><pre id="raw-payload" class="json-block"></pre><details class="evidence-drawer open"><summary>Show current planner trace</summary><pre id="planner-trace"></pre></details></section></div>
+        <section class="panel advisory-panel"><div class="panel-head"><div><p class="eyebrow">ADVISORY LAYER</p><h2>Forecast and AI stay separate</h2></div><span class="rule-tag">NO SCORE INPUT</span></div><div class="advisory-grid"><div><span class="advisory-number">01</span><strong>Forecast</strong><p>Observed readings and forecast values are shown side by side. Forecast output is advisory and never changes water, heat, flood, storage, or sequence gates.</p></div><div><span class="advisory-number">02</span><strong>AI explanation</strong><p>An optional explainer may cite this trace and answer questions about supplied context. It cannot become an agronomist or replace the deterministic result.</p></div><div><span class="advisory-number">03</span><strong>Privacy</strong><p>The demo uses coarse Kano context only. Exact coordinates, account data, and remote sync are not required.</p></div></div></section>
+      </section>
+
+      <footer class="app-footer"><div><strong>FIELD / SHIFT</strong> <span>FIELD + STORE</span></div><p>Rules decide. AI only explains. A farmer or agronomist must confirm before acting.</p><a href="/lite.html">Lite mode ↗</a></footer>
+    </main>
+  </div>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

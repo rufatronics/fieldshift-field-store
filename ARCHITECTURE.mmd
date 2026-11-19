@@ -1,0 +1,10 @@
+flowchart LR
+  A[ESP32 or simulator JSON] --> B[Schema + range validation]
+  B --> C[Timestamp / stale / connection quality]
+  C --> D[Transparent calibration layer]
+  D --> E[Shared deterministic FieldShift engine]
+  E --> F[Plan + affected rule IDs]
+  C --> G[Store risk evaluator]
+  G --> H[Local alert adapter]
+  E --> I[Technical evidence trace]
+  J[Forecast / AI] -. advisory only .-> I

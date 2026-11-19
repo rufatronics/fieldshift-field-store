@@ -1,0 +1,15 @@
+{
+  "name": "fieldshift-field-store",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Offline-first field and grain-store monitoring dashboard for FieldShift.",
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "build": "node tools/build.mjs",
+    "start": "node tools/dev-server.mjs",
+    "test": "node --test",
+    "replay": "node tools/replay-case.mjs",
+    "check": "npm run build && npm test && node --check tools/replay-case.mjs && git diff --check"
+  }
+}

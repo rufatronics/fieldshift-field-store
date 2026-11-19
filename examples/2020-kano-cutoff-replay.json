@@ -1,0 +1,59 @@
+{
+  "title": "Malam Sani: plan, watch, protect",
+  "status": "fictional illustrative scenario; not observed impact evidence",
+  "farmer": {
+    "zone": "Kano",
+    "lowPlot": true,
+    "irrigation": false,
+    "storage": "poor",
+    "previousRotation": [
+      "maize",
+      "maize",
+      "groundnut"
+    ],
+    "marketPreferences": [
+      "cowpea",
+      "millet",
+      "sesame"
+    ]
+  },
+  "droughtStress": {
+    "current": {
+      "sequence": [
+        "maize",
+        "maize",
+        "groundnut"
+      ],
+      "score": 65,
+      "rules": [
+        "R-SEQ-02",
+        "R-SEQ-03"
+      ]
+    },
+    "topAlternative": {
+      "sequence": [
+        "millet",
+        "cowpea",
+        "sesame"
+      ],
+      "score": 89,
+      "rules": [
+        "R-SEQ-03"
+      ]
+    }
+  },
+  "floodStressTopOption": {
+    "sequence": [
+      "millet",
+      "cowpea",
+      "sesame"
+    ],
+    "score": 6,
+    "gated": true,
+    "rules": [
+      "R-SEQ-03",
+      "R-GATE"
+    ]
+  },
+  "dataNote": "Demo climatology and transparent perturbations only. The crop catalog remains placeholder data pending agronomic review."
+}

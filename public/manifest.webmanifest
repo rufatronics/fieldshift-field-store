@@ -1,0 +1,10 @@
+{
+  "name": "FieldShift Field + Store",
+  "short_name": "FieldShift",
+  "description": "Plan before planting, watch during the season, protect after harvest.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4efe6",
+  "theme_color": "#17201f",
+  "icons": []
+}

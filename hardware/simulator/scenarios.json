@@ -1,0 +1,12 @@
+{
+  "notes": "Simulator messages are fictional demo inputs, not field observations.",
+  "scenarios": [
+    {"id":"normalField","label":"Normal field","deviceType":"field"},
+    {"id":"dryingSoil","label":"Drying soil","deviceType":"field"},
+    {"id":"heavyFlood","label":"Heavy rain / flood","deviceType":"field"},
+    {"id":"hotField","label":"Hot field","deviceType":"field"},
+    {"id":"safeStore","label":"Safe store","deviceType":"store"},
+    {"id":"humidStore","label":"Humid store","deviceType":"store"},
+    {"id":"staleField","label":"Stale / disconnected","deviceType":"field"}
+  ]
+}
