@@ -16,10 +16,10 @@ const demoPlan = calculatePlan(profile);
 const state = {
   view: "plan",
   scenario: "normalField",
-  latestField: scenarioMessage("normalField"),
-  latestStore: scenarioMessage("safeStore"),
-  fieldTranslation: translateFieldReading(scenarioMessage("normalField")),
-  storeEvaluation: evaluateStoreReading(scenarioMessage("safeStore")),
+  latestField: scenarioMessage("normalField", new Date().toISOString()),
+  latestStore: scenarioMessage("safeStore", new Date().toISOString()),
+  fieldTranslation: translateFieldReading(scenarioMessage("normalField", new Date().toISOString())),
+  storeEvaluation: evaluateStoreReading(scenarioMessage("safeStore", new Date().toISOString())),
   alerts: [],
   queue: [],
   plan: demoPlan
